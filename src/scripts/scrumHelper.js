@@ -2004,8 +2004,8 @@ async function fetchUserRepositories(username, token, org = '') {
 		console.log('Search URLs:', { issuesUrl, commentsUrl });
 
 		const [issuesRes, commentsRes] = await Promise.all([
-			fetch(issuesUrl, { headers }).catch(() => ({ ok: false, json: () => ({ items: [] }) })),
-			fetch(commentsUrl, { headers }).catch(() => ({ ok: false, json: () => ({ items: [] }) })),
+			githubRequest(issuesUrl, { headers }).catch(() => ({ ok: false, json: () => ({ items: [] }) })),
+			githubRequest(commentsUrl, { headers }).catch(() => ({ ok: false, json: () => ({ items: [] }) })),
 		]);
 
 		const repoSet = new Set();
